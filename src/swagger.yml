@@ -1,0 +1,95 @@
+openapi : "3.0.0"
+paths:
+  /users:
+    get:
+      tags:
+        - Users
+      description: List all users
+      responses:
+        200: 
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    admin:
+                      type: boolean
+                    created_at: 
+                      type: string
+                      format: date
+                    updated_at:
+                      type: string
+                      format: date
+        400:
+          description: Unauthorized
+  /users/:user_id:
+    get:
+      responses:
+        400:
+          description: User not found
+        200:
+          description: OK
+          application/json:
+            content:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  admin:
+                    type: boolean
+                  created_at:
+                    type: string
+                    format: date
+                  updated_at:
+                    type: string
+                    format: date
+  
+  /users/:user_id/admin:
+    patch:
+      tags:
+        - Users
+      description: Turn user to admin
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name: 
+                    type: string
+                  email:
+                    type: string
+                  admin:
+                    type: boolean
+                  created_at:
+                    type: string
+                    format: date
+                  updated_at:
+                    type: string
+                    format: date
+        400:
+          description: User not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+
+
