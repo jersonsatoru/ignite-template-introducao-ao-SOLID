@@ -1,6 +1,40 @@
 openapi : "3.0.0"
 paths:
   /users:
+    post:
+      tags: 
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+      responses:
+        400:
+          description: Errors like: Email already registered
+        200:
+          application/json:
+            content:
+              schema:
+                type: ojects
+                properties:
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  admin:
+                    type: boolean
+                  created_at:
+                    type: string
+                    format: date
+                  updated_at:
+                    type: string
+                    format: date
     get:
       tags:
         - Users
@@ -31,6 +65,8 @@ paths:
           description: Unauthorized
   /users/:user_id:
     get:
+      tags:
+        - Users
       responses:
         400:
           description: User not found
@@ -53,7 +89,6 @@ paths:
                   updated_at:
                     type: string
                     format: date
-  
   /users/:user_id/admin:
     patch:
       tags:
@@ -81,15 +116,3 @@ paths:
                     format: date
         400:
           description: User not found
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                email:
-                  type: string
-
-
