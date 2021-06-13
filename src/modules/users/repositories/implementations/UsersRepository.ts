@@ -25,6 +25,8 @@ class UsersRepository implements IUsersRepository {
       email,
     });
 
+    this.users.push(user);
+
     return user;
   }
 

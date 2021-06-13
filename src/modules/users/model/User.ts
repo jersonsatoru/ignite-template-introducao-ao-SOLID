@@ -7,6 +7,15 @@ class User {
   admin: boolean;
   created_at: Date;
   updated_at: Date;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuidV4();
+      this.admin = false;
+      this.created_at = new Date();
+      this.updated_at = new Date();
+    }
+  }
 }
 
 export { User };

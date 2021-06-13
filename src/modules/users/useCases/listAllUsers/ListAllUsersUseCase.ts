@@ -1,5 +1,3 @@
-import { response } from "express";
-
 import { User } from "../../model/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
